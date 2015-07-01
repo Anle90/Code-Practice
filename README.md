@@ -1,7 +1,3 @@
-# hello-world
+#Read Me
 
-Going through Github Tutorial.
-
-Making a first commit.
-
-Use this to edit 'master'
+Do C code practices in this repository.
