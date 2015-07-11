@@ -1,0 +1,76 @@
+#!/usr/local/bin/ruby
+def choice_response(choose)
+	puts "Alright, lets #{choose} a file."
+end
+
+puts """
+Today we're going to give you the option of
+creating a file, copying a file, or deleting a file.
+
+If you'd like to go ahead with this press RETURN
+If not, go ahead and press CTRL-C
+"""
+$stdin.gets.chomp
+
+
+puts "Do you want to create, copy, or delete a file?"
+choice = $stdin.gets.chomp
+if choice == "create"
+elsif choice == "copy"
+elsif choice == "delete"
+else
+	puts "INVALID CHOICE!!"
+	exit
+end
+
+puts "\n"
+
+puts "What's the file name that you want to create, copy, or delete?"
+
+file_name = $stdin.gets.chomp
+
+if file_name.include? "txt"
+elsif file_name.include? "jpg" 
+else
+	puts "INVALID FILE NAME!!"
+	exit
+end
+
+
+puts "\n"
+
+if choice == "create"
+	choice_response(choice)
+	outfile = open(file_name, "w+")
+	puts "\nGreat the file has been created!. You're all set!"
+	outfile.close
+
+elsif choice == "copy"
+	choice_response(choice)
+	puts "\nWhat name do you want the copy of #{file_name} to be?"
+	copied_file = $stdin.gets.chomp
+	infile_data = open(file_name, "r+").read
+
+	outfile = open(copied_file, "w+")
+
+	outfile.write(infile_data)
+	puts "\nGreat the copied file has been created!. You're all set!"
+	outfile.close
+
+elsif choice == "delete"
+	choice_response(choice)
+	puts "\nAre you sure you want to delete this file?"
+	puts "To delete press RETURN"
+	puts "To exit and quit this program, press CTRL-C"
+
+	$stdin.gets.chomp
+	File.delete(file_name)
+
+	puts "Great the file has been deleted! You're all set!"
+else
+	puts "You didn't give a valid choice!!"
+end
+
+
+
+
