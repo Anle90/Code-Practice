@@ -1,0 +1,44 @@
+
+
+def luhn(code)
+oddsum = 0
+evensum = 0
+numsum = 0
+
+
+code = code.to_s
+num_check = code.slice!(-1).to_i	
+code = code.reverse
+
+code = code.chars.each_slice(2) do |odd, even|
+	odd = odd.to_i 
+	odd = odd * 2
+	odd -= 9 if odd >=10
+
+	
+	oddsum = oddsum + odd
+
+	even = even.to_i
+	evensum = evensum + even
+
+	end
+
+	(evensum + oddsum + num_check) % 10 == 0
+end
+
+counter = 0
+(001..999).each do |b|
+	b = "%03d" % b	
+	@A = "1234567890123#{b}"
+	@A = @A.to_i
+	if luhn(@A) == true
+		counter += 1
+		puts "#{@A} is true. Counter is #{counter}"
+	else
+	end
+end
+
+
+
+
+
