@@ -1,3 +1,3 @@
 #Read Me
 
-Do C code practices in this repository.
+Do code practices in this repository.
